@@ -1,0 +1,32 @@
+[package]
+name = "bye_pcd_rs"
+version = "0.12.1"
+authors = ["jerry73204 <jerry73204@gmail.com>","qsbye <2557877116@qq.com>"]
+edition = "2021"
+description = "Working with PCD file format in Rust"
+categories = ["parsing"]
+documentation = "https://docs.rs/bye_pcd_rs/"
+repository = "https://github.com/qsbye/bye.pcd.rs"
+homepage = "https://github.com/qsbye/bye.pcd.rs"
+readme = "README.md"
+license-file = "LICENSE"
+
+[dependencies]
+byteorder = "1.5.0"
+thiserror = "1.0.65"
+regex = "1.11.1"
+num-traits = "0.2.19"
+itertools = "0.13.0"
+# 使用上游版本
+pcd-rs-derive = { version = "0.12.0" }
+# wasm运行时
+wasmer = "5.0.4"
+
+[[example]]
+name = "write_static"
+
+[[example]]
+name = "read_static"
+
+[dev-dependencies]
+eyre = "0.6.12"
