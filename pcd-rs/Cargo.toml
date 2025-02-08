@@ -3,14 +3,14 @@ name = "bye_pcd_rs"
 version = "0.12.1"
 authors = ["jerry73204 <jerry73204@gmail.com>","qsbye <2557877116@qq.com>"]
 edition = "2021"
-description = "Working with PCD(Point Cloud Library) file format in Rust.在Rust中使用WebAssembly处理PCD(点云库)文件格式"
+description = "Working with PCD(Point Cloud Library) file format in Rust.在Rust中处理PCD(点云库)文件格式."
 categories = ["parsing"]
 documentation = "https://docs.rs/bye_pcd_rs/"
 repository = "https://github.com/qsbye/bye.pcd.rs"
 homepage = "https://github.com/qsbye/bye.pcd.rs"
 readme = "README.md"
 license-file = "LICENSE"
-exclude = ["git"]
+exclude = ["git", "assets/pcljs/pcl-core.wat"]
 
 [dependencies]
 byteorder = "1.5.0"
@@ -21,13 +21,17 @@ itertools = "0.14.0"
 # 使用固定版本0.12.0
 bye_pcd_derive_rs = { version = "0.12.0" }
 # wasm运行时
-wasmer = "5.0.4"
+wasmer = { version = "5.0.4", optional = true }
+# 调用pcl.js从而调用pcl-core.wasm
+wasm-bindgen = { version = "0.2.100", optional = true }
 # 点云预览
 bye_pcd_viewer_rs = { version = "0.1.67", optional = true }
 
 [features]
 # 点云预览特性绑定"viewer"关键词
 viewer = ["bye_pcd_viewer_rs"]
+# 使用pcl.js绑定"wasm"关键词
+wasm = ["wasmer", "wasm-bindgen"]
 
 [[example]]
 name = "write_static"

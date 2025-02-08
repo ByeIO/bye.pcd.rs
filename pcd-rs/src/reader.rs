@@ -140,8 +140,10 @@ where
         }
 
         let record_result = match self.meta.data {
+            // 判断数据是什么格式
             DataKind::Ascii => Record::read_line(&mut self.reader, &self.meta.field_defs),
             DataKind::Binary => Record::read_chunk(&mut self.reader, &self.meta.field_defs),
+            DataKind::BinaryCompressed => Record::read_chunk(&mut self.reader, &self.meta.field_defs),
         };
 
         match record_result {

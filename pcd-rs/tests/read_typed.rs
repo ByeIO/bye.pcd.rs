@@ -1,5 +1,3 @@
-#![cfg(feature = "derive")]
-
 use eyre::Result;
 use itertools::Itertools as _;
 use bye_pcd_rs::{PcdDeserialize, Reader};
