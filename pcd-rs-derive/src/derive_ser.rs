@@ -21,22 +21,22 @@ pub fn f_pcd_record_write_derive(item: ItemStruct) -> syn::Result<TokenStream> {
     } = derive_named_fields(struct_name, &item.fields)?;
 
     let expanded = quote! {
-        impl ::pcd_rs::record::PcdSerialize for #struct_name {
+        impl ::bye_pcd_rs::record::PcdSerialize for #struct_name {
             fn is_dynamic() -> bool {
                 false
             }
 
-            fn write_spec() -> ::pcd_rs::metas::Schema {
+            fn write_spec() -> ::bye_pcd_rs::metas::Schema {
                 #write_spec_tokens
             }
 
-            fn write_chunk<R: std::io::Write>(&self, writer: &mut R, _: &::pcd_rs::metas::Schema) -> ::pcd_rs::Result<()> {
-                use ::pcd_rs::byteorder::{LittleEndian, WriteBytesExt};
+            fn write_chunk<R: std::io::Write>(&self, writer: &mut R, _: &::bye_pcd_rs::metas::Schema) -> ::bye_pcd_rs::Result<()> {
+                use ::bye_pcd_rs::byteorder::{LittleEndian, WriteBytesExt};
                 { #bin_write_tokens };
                 Ok(())
             }
 
-            fn write_line<R: std::io::Write>(&self, writer: &mut R, _: &::pcd_rs::metas::Schema) -> ::pcd_rs::Result<()> {
+            fn write_line<R: std::io::Write>(&self, writer: &mut R, _: &::bye_pcd_rs::metas::Schema) -> ::bye_pcd_rs::Result<()> {
                 let mut tokens = Vec::<String>::new();
                 { #text_write_tokens };
                 let line = tokens.join(" ");
@@ -101,7 +101,7 @@ fn derive_named_fields(
     let write_spec_tokens = quote! {
         vec![#(#write_specs),*]
             .into_iter()
-            .collect::<::pcd_rs::metas::Schema>()
+            .collect::<::bye_pcd_rs::metas::Schema>()
     };
     let bin_write_tokens = quote! {
         let #struct_name { #(#field_idents),* } = self;
@@ -199,42 +199,42 @@ fn make_rw_expr(type_ident: &Ident) -> Option<DerivedTokens> {
     let (write_spec_tokens, bin_write_tokens, text_write_tokens) =
         match type_ident.to_string().as_str() {
             "u8" => (
-                quote! { ::pcd_rs::metas::ValueKind::U8 },
+                quote! { ::bye_pcd_rs::metas::ValueKind::U8 },
                 quote! { writer.write_u8(value)? },
                 quote! { tokens.push(u8::to_string(&value)) },
             ),
             "u16" => (
-                quote! { ::pcd_rs::metas::ValueKind::U16 },
+                quote! { ::bye_pcd_rs::metas::ValueKind::U16 },
                 quote! { writer.write_u16::<LittleEndian>(value)? },
                 quote! { tokens.push(u16::to_string(&value)) },
             ),
             "u32" => (
-                quote! { ::pcd_rs::metas::ValueKind::U32 },
+                quote! { ::bye_pcd_rs::metas::ValueKind::U32 },
                 quote! { writer.write_u32::<LittleEndian>(value)? },
                 quote! { tokens.push(u32::to_string(&value)) },
             ),
             "i8" => (
-                quote! { ::pcd_rs::metas::ValueKind::I8 },
+                quote! { ::bye_pcd_rs::metas::ValueKind::I8 },
                 quote! { writer.write_i8(value)? },
                 quote! { tokens.push(i8::to_string(&value)) },
             ),
             "i16" => (
-                quote! { ::pcd_rs::metas::ValueKind::I16 },
+                quote! { ::bye_pcd_rs::metas::ValueKind::I16 },
                 quote! { writer.write_i16::<LittleEndian>(value)? },
                 quote! { tokens.push(i16::to_string(&value)) },
             ),
             "i32" => (
-                quote! { ::pcd_rs::metas::ValueKind::I32 },
+                quote! { ::bye_pcd_rs::metas::ValueKind::I32 },
                 quote! { writer.write_i32::<LittleEndian>(value)? },
                 quote! { tokens.push(i32::to_string(&value)) },
             ),
             "f32" => (
-                quote! { ::pcd_rs::metas::ValueKind::F32 },
+                quote! { ::bye_pcd_rs::metas::ValueKind::F32 },
                 quote! { writer.write_f32::<LittleEndian>(value)? },
                 quote! { tokens.push(f32::to_string(&value)) },
             ),
             "f64" => (
-                quote! { ::pcd_rs::metas::ValueKind::F64 },
+                quote! { ::bye_pcd_rs::metas::ValueKind::F64 },
                 quote! { writer.write_f64::<LittleEndian>(value)? },
                 quote! { tokens.push(f64::to_string(&value)) },
             ),

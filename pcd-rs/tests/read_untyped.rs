@@ -1,6 +1,6 @@
 use eyre::Result;
 use itertools::Itertools as _;
-use pcd_rs::{DynRecord, Reader};
+use bye_pcd_rs::{DynRecord, Reader};
 
 #[test]
 fn load_ascii_untyped() -> Result<()> {

@@ -1,5 +1,5 @@
 use eyre::Result;
-use pcd_rs::{DataKind, PcdDeserialize, PcdSerialize, WriterInit};
+use bye_pcd_rs::{DataKind, WriterInit, PcdSerialize, PcdDeserialize};
 
 #[derive(Debug, PcdDeserialize, PcdSerialize, PartialEq)]
 pub struct Point {

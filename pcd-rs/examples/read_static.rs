@@ -1,5 +1,5 @@
 use eyre::Result;
-use pcd_rs::{PcdDeserialize, Reader};
+use bye_pcd_rs::{PcdDeserialize, Reader};
 
 #[derive(PcdDeserialize)]
 pub struct Point {

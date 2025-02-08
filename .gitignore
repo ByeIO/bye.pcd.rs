@@ -4,6 +4,6 @@
 *.swp
 
 # Rust and Cargo
-/target
+target/*
 **/*.rs.bk
 Cargo.lock

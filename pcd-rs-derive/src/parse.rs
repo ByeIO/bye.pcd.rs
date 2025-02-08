@@ -1,3 +1,6 @@
+#![allow(dead_code)]
+#![allow(unused_imports)]
+
 use once_cell::sync::Lazy;
 use regex::Regex;
 use syn::{

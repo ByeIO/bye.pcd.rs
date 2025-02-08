@@ -1,6 +1,8 @@
+#![allow(unused_imports)]
+
 use eyre::Result;
 use itertools::Itertools as _;
-use pcd_rs::{DataKind, DynRecord, Field, Reader, Schema, ValueKind, WriterInit};
+use bye_pcd_rs::{DataKind, DynRecord, Field, Reader, Schema, ValueKind, WriterInit};
 
 #[test]
 fn write_ascii_untyped() -> Result<()> {

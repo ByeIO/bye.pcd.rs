@@ -2,7 +2,7 @@
 
 use eyre::Result;
 use itertools::Itertools as _;
-use pcd_rs::{DataKind, PcdDeserialize, PcdSerialize, Reader, WriterInit};
+use bye_pcd_rs::{DataKind, PcdDeserialize, PcdSerialize, Reader, WriterInit};
 
 #[derive(Debug, PcdDeserialize, PcdSerialize, PartialEq)]
 pub struct Point {

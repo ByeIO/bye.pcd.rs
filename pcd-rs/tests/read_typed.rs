@@ -2,7 +2,7 @@
 
 use eyre::Result;
 use itertools::Itertools as _;
-use pcd_rs::{PcdDeserialize, Reader};
+use bye_pcd_rs::{PcdDeserialize, Reader};
 
 #[derive(PcdDeserialize)]
 pub struct PointAscii {

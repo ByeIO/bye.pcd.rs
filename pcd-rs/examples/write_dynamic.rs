@@ -1,5 +1,5 @@
 use eyre::Result;
-use pcd_rs::{DataKind, DynRecord, DynWriter, Field, Schema, ValueKind, WriterInit};
+use bye_pcd_rs::{DataKind, DynRecord, DynWriter, Field, Schema, ValueKind, WriterInit};
 use std::iter::FromIterator;
 
 fn main() -> Result<()> {
