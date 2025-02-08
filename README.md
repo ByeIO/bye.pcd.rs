@@ -1,22 +1,27 @@
-# pcd-rs: Read point cloud data from **PCD** file format
+# bye_pcd_rs: 从 **PCD** 文件格式读取点云数据
 
-`pcd-rs` allows you to parse PCD point cloud data from a file or a binary buffer.
+`bye_pcd_rs` 允许你从文件或二进制缓冲区解析 PCD 点云数据。
 
-## Usage
+支持的 PCD 格式: ascii, binary, binary_compressed
 
-To add this crate to your project,
+## 使用方法
+
+要将此 crate 添加到你的项目中，请运行以下命令：
 
 ```bash
-cargo add pcd-rs
+cargo add bye_pcd_rs
+```
+如果需要点云预览功能(不添加feature就不会多编译300+个依赖包😂):
+```bash
+cargo add bye_pcd_rs --feature viewer
 ```
 
-Please visit [docs.rs](https://docs.rs/pcd-rs/) to learn more about the usage.
+请访问 [docs.rs](https://docs.rs/bye_pcd_rs/) 了解更多使用细节。
 
-## Examples
+## 示例
 
-Example code can be found in `examples` directory.
-Run `cargo run --example` to list all available example binaries.
+示例代码可以在 `examples` 目录中找到。运行 `cargo run --example` 以列出所有可用的示例二进制文件。
 
-## License
+## 许可证
 
-MIT license. See [LICESE](LICENSE) file.
+MIT 许可证。请参阅 [LICENSE](LICENSE) 文件。

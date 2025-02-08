@@ -10,6 +10,7 @@ repository = "https://github.com/qsbye/bye.pcd.rs"
 homepage = "https://github.com/qsbye/bye.pcd.rs"
 readme = "README.md"
 license-file = "LICENSE"
+exclude = ["git"]
 
 [dependencies]
 byteorder = "1.5.0"
