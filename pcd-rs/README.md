@@ -11,6 +11,10 @@
 ```bash
 cargo add bye_pcd_rs
 ```
+如果需要点云预览功能(不添加feature就不会多编译300+个依赖包😂):
+```bash
+cargo add bye_pcd_rs --feature viewer
+```
 
 请访问 [docs.rs](https://docs.rs/bye_pcd_rs/) 了解更多使用细节。
 
